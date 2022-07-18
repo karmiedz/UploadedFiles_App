@@ -1,0 +1,8 @@
+<div class="d-flex flex-row flex-nowrap justify-content-between">
+    <input id="file-upload" type="file" (change)="onChange($event)" #fileUpload>
+    <input type="text" [(ngModel)]="SelectedFileName" readonly="readonly" />
+    <button (click)="fileUpload.click()" class="btn btn-secondary">Select file</button>
+    <button (click)="onUpload()" class="btn btn-primary">Upload</button>
+</div>
+<span>{{LoadedMsg}}</span>
+

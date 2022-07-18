@@ -1,0 +1,9 @@
+<button (click)="showFiles()" class="btn btn-secondary">Get all uploaded files</button>
+
+<div *ngIf="Files" class="wrapper-list">
+    <ul>
+        <li *ngFor="let file of Files">
+            {{ file.name }}
+        </li>
+    </ul>
+</div>
