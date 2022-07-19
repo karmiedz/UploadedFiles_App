@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { FileUploadService } from '../services/file-upload-service.service';
-import { UploadedFileVM} from '../view-model/UploadedFileVM';
+import { UploadedFileVM} from '../view-models/UploadedFileVM';
 
 @Component({
     selector: 'app-files-list',

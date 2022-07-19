@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using UploadedFiles.Models;
 
-namespace UploadedFiles.Repository
+namespace UploadedFiles.Repositories
 {
 	public interface IFilesRepository
 	{

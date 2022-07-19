@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using UploadedFiles.Models;
-using UploadedFiles.Repository;
+using UploadedFiles.Repositories;
 
 namespace FileUploeader.Controllers
 {

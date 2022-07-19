@@ -10,6 +10,8 @@
 
     <!-- Set this to true if you enable server-side prerendering -->
     <BuildServerSideRenderer>false</BuildServerSideRenderer>
+	<GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+	<GenerateTargetFrameworkAttribute>false</GenerateTargetFrameworkAttribute>
   </PropertyGroup>
 
   <ItemGroup>
@@ -20,6 +22,7 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.4" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.3.1" />
   </ItemGroup>
 
   <ItemGroup>
@@ -31,13 +34,13 @@
 
   <ItemGroup>
     <None Remove="ClientApp\src\app\services\file-upload-service.service.ts" />
-    <None Remove="ClientApp\src\app\view-model\UploadedFileVM.ts" />
+    <None Remove="ClientApp\src\app\view-models\UploadedFileVM.ts" />
     <None Remove="ClientApp\tsconfig.json" />
   </ItemGroup>
 
   <ItemGroup>
     <TypeScriptCompile Include="ClientApp\src\app\services\file-upload-service.service.ts" />
-    <TypeScriptCompile Include="ClientApp\src\app\view-model\UploadedFileVM.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\view-models\UploadedFileVM.ts" />
   </ItemGroup>
 
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">
@@ -67,5 +70,4 @@
       </ResolvedFileToPublish>
     </ItemGroup>
   </Target>
-
 </Project>

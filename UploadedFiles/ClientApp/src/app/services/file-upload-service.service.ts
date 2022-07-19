@@ -1,7 +1,7 @@
 ﻿import { Injectable, Inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { UploadedFileVM } from '../view-model/UploadedFileVM';
+import { UploadedFileVM } from '../view-models/UploadedFileVM';
 
 @Injectable({
     providedIn: 'root'

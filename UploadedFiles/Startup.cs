@@ -1,20 +1,18 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.SpaServices.AngularCli;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using UploadedFiles.Models;
-using UploadedFiles.Repository;
+using Microsoft.OpenApi.Models;
+using UploadedFiles.Repositories;
 
 namespace UploadedFiles
 {
 	public class Startup
 	{
 		public Startup(IConfiguration configuration)
-		{
+		{ 
 			Configuration = configuration;
 		}
 
@@ -23,6 +21,11 @@ namespace UploadedFiles
 		// This method gets called by the runtime. Use this method to add services to the container.
 		public void ConfigureServices(IServiceCollection services)
 		{
+			services.AddSwaggerGen(c =>
+			{
+				c.SwaggerDoc("v1", new OpenApiInfo { Title = "UploadedFiles", Version = "v1" });
+			});
+
 			services.AddControllersWithViews();
 			// In production, the Angular files will be served from this directory
 			services.AddSpaStaticFiles(configuration =>
@@ -31,6 +34,7 @@ namespace UploadedFiles
 			});
 
 			services.AddSingleton<IFilesRepository, FilesRepository>();
+
 			//var connection = Configuration.GetConnectionString("FileDBConnectionString");
 			//services.AddDbContextPool<FileDBContext>(options => options.UseSqlServer(connection));
 		}
@@ -48,6 +52,12 @@ namespace UploadedFiles
 				// The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
 				app.UseHsts();
 			}
+
+			app.UseSwagger();
+			app.UseSwaggerUI(c =>
+			{
+				c.SwaggerEndpoint("/swagger/v1/swagger.json", "UploadedFiles v1");
+			});
 
 			app.UseHttpsRedirection();
 			app.UseStaticFiles();
